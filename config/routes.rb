@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   root "sessions#new"
 
+  get "/signup", to: "users#new"
   resources :users, only: [:new, :create]
-  get "/signup", to: "users#new", as: "signup"
 
-  get "/login", to: "sessions#new", as: "login"
+  get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy", as: "logout"
+  delete "/logout", to: "sessions#destroy"
 
   resources :places do
     resources :entries
   end
 end
+
 
