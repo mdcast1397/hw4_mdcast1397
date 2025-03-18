@@ -1,4 +1,7 @@
 class EntriesController < ApplicationController
+  before_action :require_login
+  @entry.user_id = current_user.id
+  @entries = current_user.entries
 
   def new
   end
